@@ -4,6 +4,7 @@ Where I will be demonstrating the syntax and explaing what I'm doing, and how it
 Links!
 
 NerdFonts (I use MESLO in the examples): https://www.nerdfonts.com/font-downloads
+
 XTERM256 color cheat-sheet: https://www.ditig.com/256-colors-cheat-sheet
 
 BASH Reference manual: https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html
