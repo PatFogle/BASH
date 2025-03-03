@@ -118,52 +118,65 @@ fi
 
 ##-----Custom prompt---------------
 
-## Elements
+# -- Items that make up the backround of the prompt lines --
+	bracket_top="╭"			# - The TOP joiner
+	bracket_middle="├"		# - the MIDDLE joiner
+	bracket_bottom="╰"		# - the BOTTOM joiner
+	leader=""				# - the leftmost end of a line
+	follower=""			# - the rightmost end of a line
+	leftsep="❨"				# - the left side element separator
+	rightsep="❩"			# - the right side element separator
+	prompt="─"				# - the command entry prompt
 
-bracket_top="╭"
-bracket_middle="├"
-bracket_bottom="╰"
-leader=""
-follower=""
-leftsep="❨"
-rightsep="❩"
-prompt="─"
+# -- Set readable names for icons
+	usericon=""
+	hosticon="󰟀"
+	osicon=""
 
-usericon=""
-hosticon="󰟀"
-osicon=""
+# -- Set miscellaneous commands
+	esc="\e"					# - Escape code
+	reset="\[$(tput sgr0)\]"	# - Resets color data
 
-esc="\e"
-reset="\[$(tput sgr0)\]"
+# - Set color names
+# - Foreground
+	fguborn="\[$(tput setaf 130)\]" # - Ubuntu Orange 	 - XTERM256 DarkOrange3
+	fgwhite="\[$(tput setaf 152)\]" # - White		  	 - XTERM256 LightCyan3
+	fglmgrn="\[$(tput setaf 34)\]"  # - Linux Mint Green - XTERM256 Green 3
+	fgdkgrn="\[$(tput setaf 28)\]"  # - Medium Green	 - XTERM256 Green 4
+	fgdkblu="\[$(tput setaf 31)\]"	# - Nice blue		 - XTERM256 DeepSkyBlue3
+	fglilac="\[$(tput setaf 104)\]" # - Lilac purple	 - XTERM256 MediumPurple
+	
+# - Background
+	bguborn="$esc[48;5;130m"	# - XTERM256 DarkOrange3
+	bgwhite="$esc[48;5;152m"	# - XTERM256 LightCyan3
+	bgdkgrn="$esc[48;5;28m"		# - XTERM256 Green4
+	bgdkblu="$esc[48;5;31m"		# - XTERM256 DeepSkyBlue3
+	bglilac="$esc[48;5;104m"	# - XTERM256 MediumPurple
+	
+# - icons
 
-fguborn="\[$(tput setaf 130)\]"
-fgwhite="\[$(tput setaf 152)\]"
-fglmgrn="\[$(tput setaf 34)\]"
-fgdkgrn="\[$(tput setaf 28)\]"
-fgdkblu="\[$(tput setaf 31)\]"
-fglilac="\[$(tput setaf 104)\]"
-
-bguborn="$esc[48;5;130m"
-bgwhite="$esc[48;5;152m"
-bgdkgrn="$esc[48;5;28m"
-bgdkblu="$esc[48;5;31m"
-bglilac="$esc[48;5;104m"
-
-user="\u"
-host="\h"
-timed="\@"
-date="\d"
-dir="\w"
+	user="\u"	# - USERNAME
+	host="\h"	# - HOSTNAME	
+	timed="\@"	# - Time in HH:MM A/P format	
+	date="\d"	# - Date in DayName, Month, Day format	
+	dir="\w"	# - Working directory, full pathname
 ## -- End of elements
 
 ## -- commands to run upon bash start --
 fastfetch
 ## -- ------------------------------- --
 
-## -- Prompt construction --------------
+
+## -- PROMPT SECTION 		--
+
+# Top line
 PS1="${bracket_top}${fgdkblu}${leader}${reset}${bgdkblu}${fgwhite}${leftsep}${date}${rightsep}${leftsep}${timed}${rightsep}${reset}${fgdkblu}${reset}"
 PS1+="${bgdkgrn}${leftsep}${usericon}${user} on ${hosticon}${host}${rightsep}${reset}${fgdkgrn}${follower}\n${reset}"
+
+# Second Line
 PS1+="${bracket_middle}${fguborn}${leader}${reset}${bguborn}${osicon} Ubuntu 24.04.2 ${reset}${bglilac}${leftsep}Working in: ${dir}${rightsep}${reset}${fglilac}${follower}${reset}\n"
+
+# Command prompt
 PS1+="${bracket_bottom}${prompt} "
 ##--------------------------------------
 
